@@ -56,7 +56,7 @@ def test_auto_generate_ships():
     assert len(test_ships_list) == 11
 
 
-@patch('src.ship.destroyed_ship_outline_cords', return_value=True)
+@patch('src.ship.destroyed_ship_outline_coords', return_value=True)
 def test_check_if_ship_destroyed_ship_destroyed(mock):
     ships_list = [[4, 4, 1]]
     coordinates = [[4, 4]]
