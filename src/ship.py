@@ -187,16 +187,12 @@ def check_if_ship_destroyed(ships_list: list[list], coordinates: list[list], sin
     """
     for ship in ships_list:
         for coord in coordinates:
-            if len(coord) == 2:
-                if coord == ship[:2]:
-                    if ship[2] == len(sinking_ship):
-                        destroyed_ship_outline_coords(sinking_ship, used_coordinates)
-                        return True
-            elif len(coord) == 3:
-                if coord[:2] == ship[:2]:
-                    if ship[2] == len(sinking_ship):
-                        destroyed_ship_outline_coords(sinking_ship, used_coordinates)
-                        return True
+            if len(coord) == 2 and coord == ship[:2] and ship[2] == len(sinking_ship):
+                destroyed_ship_outline_coords(sinking_ship, used_coordinates)
+                return True
+            elif len(coord) == 3 and coord[:2] == ship[:2] and ship[2] == len(sinking_ship):
+                destroyed_ship_outline_coords(sinking_ship, used_coordinates)
+                return True
     return False
 
 
@@ -219,6 +215,3 @@ def destroyed_ship_outline_coords(sinking_ship: list[list], used_coordinates: li
             used_coordinates.append([coord[0] + 1, coord[1] - 1])
             used_coordinates.append([coord[0] + 1, coord[1] + 1])
             used_coordinates.append([coord[0] - 1, coord[1] + 1])
-
-
-
